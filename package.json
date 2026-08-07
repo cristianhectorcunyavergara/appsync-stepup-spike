@@ -1,0 +1,7 @@
+{
+  "name": "appsync-stepup-spike",
+  "version": "1.0.0",
+  "dependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
