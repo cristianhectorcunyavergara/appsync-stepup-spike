@@ -2,11 +2,7 @@ import { executeMiddleware } from "./middleware.js";
 
 export function request(ctx) {
 
-    const result = executeMiddleware(ctx);
-
-    if (result.stopExecution) {
-        return result;
-    }
+    executeMiddleware(ctx);
 
     return {
         payload: {}
