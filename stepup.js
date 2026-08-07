@@ -1,20 +1,14 @@
-import { runtime } from '@aws-appsync/utils';
-
 export function validateStepUp(ctx) {
 
-    const rc = ctx.identity?.resolverContext || {};
+    const rc = {
+        requiresStepUp: "true",
+        challengeId: "POC123"
+    };
 
-    console.log(
-        "STEPUP_CONTEXT",
-        JSON.stringify(rc)
-    );
-
-    if (rc.requiresStepUp === "true") {
-
-        runtime.earlyReturn({
-            token: null,
-            requiresStepUp: "true",
-            challengeId: `${rc.challengeId}-resolver`
-        });
-    }
+    return {
+        token: null,
+        requiresStepUp: "true",
+        challengeId: `${rc.challengeId}-resolver`,
+        stopExecution: true
+    };
 }
