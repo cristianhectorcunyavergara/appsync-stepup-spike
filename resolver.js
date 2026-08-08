@@ -2,20 +2,19 @@ import { executeMiddleware } from "./middleware.js";
 
 export function request(ctx) {
 
-    const result =
-        executeMiddleware(ctx);
+    const result = executeMiddleware(ctx);
 
-    if (result.stopExecution) {
-
+    if (result) {
         return result;
     }
 
     return {
-        payload: {}
+        token: "CONTINUA",
+        requiresStepUp: "false",
+        challengeId: ""
     };
 }
 
 export function response(ctx) {
-
     return ctx.result;
 }
