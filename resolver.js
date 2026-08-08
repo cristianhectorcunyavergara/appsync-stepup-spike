@@ -2,19 +2,16 @@ import { executeMiddleware } from "./middleware.js";
 
 export function request(ctx) {
 
-    const result = executeMiddleware(ctx);
+    executeMiddleware(ctx);
 
-    if (result) {
-        return result;
-    }
+    return {};
+}
+
+export function response(ctx) {
 
     return {
         token: "CONTINUA",
         requiresStepUp: "false",
         challengeId: ""
     };
-}
-
-export function response(ctx) {
-    return ctx.result;
 }
