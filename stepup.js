@@ -1,3 +1,5 @@
+import { runtime } from "@aws-appsync/utils";
+
 export function validateStepUp(ctx) {
 
     const rc = ctx.identity?.resolverContext || {};
@@ -9,12 +11,10 @@ export function validateStepUp(ctx) {
 
     if (rc.requiresStepUp === "true") {
 
-        return {
+        runtime.earlyReturn({
             token: null,
             requiresStepUp: "true",
             challengeId: `${rc.challengeId}-resolver`
-        };
+        });
     }
-
-    return null;
 }
