@@ -10,14 +10,11 @@ export function validateStepUp(ctx) {
     if (rc.requiresStepUp === "true") {
 
         return {
-            stopExecution: true,
             token: null,
             requiresStepUp: "true",
             challengeId: `${rc.challengeId}-resolver`
         };
     }
 
-    return {
-        stopExecution: false
-    };
+    return null;
 }
